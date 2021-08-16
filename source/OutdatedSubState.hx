@@ -28,10 +28,7 @@ class OutdatedSubState extends MusicBeatState
 	override function create()
 	{
 		super.create();
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('week54prototype', 'shared'));
-		bg.scale.x *= 1.55;
-		bg.scale.y *= 1.55;
-		bg.screenCenter();
+		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('warning', 'shared'));
 		add(bg);
 		
 		var kadeLogo:FlxSprite = new FlxSprite(FlxG.width, 0).loadGraphic(Paths.image('KadeEngineLogo'));
@@ -40,7 +37,7 @@ class OutdatedSubState extends MusicBeatState
 		kadeLogo.x -= kadeLogo.frameHeight;
 		kadeLogo.y -= 180;
 		kadeLogo.alpha = 0.8;
-		add(kadeLogo);
+		// add(kadeLogo);
 		
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"Your Kade Engine is outdated!\nYou are on "
@@ -57,7 +54,7 @@ class OutdatedSubState extends MusicBeatState
 		txt.borderSize = 3;
 		txt.borderStyle = FlxTextBorderStyle.OUTLINE;
 		txt.screenCenter();
-		add(txt);
+		// add(txt);
 		
 		FlxTween.color(bg, 2, bg.color, FlxColor.fromString(bgColors[colorRotation]));
 		FlxTween.angle(kadeLogo, kadeLogo.angle, -10, 2, {ease: FlxEase.quartInOut});
@@ -84,11 +81,11 @@ class OutdatedSubState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		// if (controls.ACCEPT)
+		// {
+		// 	fancyOpenURL("https://kadedev.github.io/Kade-Engine/changelogs/changelog-" + needVer);
+		// }
 		if (controls.ACCEPT)
-		{
-			fancyOpenURL("https://kadedev.github.io/Kade-Engine/changelogs/changelog-" + needVer);
-		}
-		if (controls.BACK)
 		{
 			leftState = true;
 			FlxG.switchState(new MainMenuState());

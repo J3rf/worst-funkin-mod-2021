@@ -35,7 +35,7 @@ class StoryMenuState extends MusicBeatState
 	];
 
 	var weekNames:Array<String> = [
-		"BF INVADES ISRAEL"
+		"carbomb.mp3"
 	];
 
 	var txtWeekTitle:FlxText;

@@ -3780,7 +3780,7 @@ class PlayState extends MusicBeatState
 				dad.playAnim('cheer', true);
 			}
 
-		if (curSong.toLowerCase() == 'the next episode' && curBeat == 293 )
+		if (curSong.toLowerCase() == 'the next episode' && curBeat == 293 && FlxG.save.data.flashing)
 			{
 				flashbang();
 			}

@@ -154,7 +154,7 @@ class TitleState extends MusicBeatState
 			FlxG.sound.music.fadeIn(4, 0, 0.7);
 		}
 
-		Conductor.changeBPM(75);
+		Conductor.changeBPM(76);
 		persistentUpdate = true;
 
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
@@ -321,32 +321,32 @@ class TitleState extends MusicBeatState
 			{
 				// Get current version of Kade Engine
 				
-				var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
-				var returnedData:Array<String> = [];
+				// var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
+				// var returnedData:Array<String> = [];
 				
-				http.onData = function (data:String)
-				{
-					returnedData[0] = data.substring(0, data.indexOf(';'));
-					returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				  	// if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState && MainMenuState.nightly == "")
-					// {
-					// 	// trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
-					// 	// OutdatedSubState.needVer = returnedData[0];
-					// 	// OutdatedSubState.currChanges = returnedData[1];
-					// 	// FlxG.switchState(new OutdatedSubState()); dumb
+				// http.onData = function (data:String)
+				// {
+				// 	returnedData[0] = data.substring(0, data.indexOf(';'));
+				// 	returnedData[1] = data.substring(data.indexOf('-'), data.length);
+				//   	// if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState && MainMenuState.nightly == "")
+				// 	// {
+				// 	// 	// trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
+				// 	// 	// OutdatedSubState.needVer = returnedData[0];
+				// 	// 	// OutdatedSubState.currChanges = returnedData[1];
+				// 	// 	// FlxG.switchState(new OutdatedSubState()); dumb
+				// 	// }
+				// 	// else
+				// 	// {
+				FlxG.switchState(new OutdatedSubState());
 					// }
-					// else
-					// {
-					FlxG.switchState(new MainMenuState());
-					// }
-				}
+				// }
 				
-				http.onError = function (error) {
-				  trace('error: $error');
-				  FlxG.switchState(new MainMenuState()); // fail but we go anyway
-				}
+				// http.onError = function (error) {
+				//   trace('error: $error');
+				//   FlxG.switchState(new MainMenuState()); // fail but we go anyway
+				// }
 				
-				http.request();
+				// http.request();
 			});
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
@@ -421,12 +421,12 @@ class TitleState extends MusicBeatState
 				// if (Main.watermarks)
 				// 	createCoolText(['Kade Engine', 'by']);
 				// else
-				createCoolText(['i made this', 'in']);
+				createCoolText(['currently finishing', 'this at']);
 			case 7:
 				// if (Main.watermarks)
 				// 	addMoreText('KadeDeveloper');
 				// else
-				addMoreText('three days');
+				addMoreText('twelve am');
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();
@@ -468,7 +468,10 @@ class TitleState extends MusicBeatState
 		{
 			remove(ngSpr);
 
-			FlxG.camera.flash(FlxColor.WHITE, 4);
+			if (FlxG.save.data.flashing)
+				FlxG.camera.flash(FlxColor.WHITE, 4);
+			else
+				FlxG.camera.flash(FlxColor.BLACK, 4);
 			remove(credGroup);
 			skippedIntro = true;
 		}
